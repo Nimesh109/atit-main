@@ -1,0 +1,75 @@
+footer {
+  background-color: #f3f6ff;
+}
+
+.footer-container {
+  max-width: 1320px;
+  margin: 0px auto;
+  
+  background-size: contain;
+  background-color: #2124b1;
+  display: flex;
+  color: white;
+  padding: 100px 50px;
+}
+
+.left-section-footer {
+  flex-basis: 47%;
+  display: flex;
+  gap: 2rem;
+}
+
+.get-in-touch .footer-icon {
+  margin-top: 10px;
+  padding-left: 10px;
+  font-size: 40px;
+}
+
+.context {
+  margin-top: 30px;
+}
+
+.context p {
+  margin-top: 10px;
+}
+
+.heading h2 {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.right-section-footer {
+  flex-basis: 47%;
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-gallery {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.newsletter {
+  flex-basis: 47%;
+}
+
+@media screen and (max-width: 950px) {
+  .footer-container {
+    flex-wrap: wrap;
+  }
+
+  .left-section-footer {
+    flex-basis: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .right-section-footer {
+    margin-top: 50px;
+    flex-basis: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}

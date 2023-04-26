@@ -1,0 +1,393 @@
+main {
+  background-color: #f3f6ff;
+}
+
+.nav-image {
+  height: 600px;
+}
+
+.home-page-container {
+  max-width: 1320px;
+  margin: 0px auto;
+  background-color: white;
+}
+
+.homepg-first-section {
+  max-width: 1320px;
+  /* height: 900px; */
+  background: url("../images/nav-image/bg-dot.png"),
+    url("../images/nav-image/bg-dot.png"),
+    url("../images/nav-image/bg-round.png"),
+    url("../images/nav-image/bg-tree.png"),
+    url("../images/nav-image/bg-bottom-hero.png");
+  background-position: 10px 10px, bottom 340px right 10px, left 55% top -1px,
+    left 45% bottom -1px, center bottom -1px;
+  background-repeat: no-repeat;
+  margin: 0px auto;
+  background-color: #2124b1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 150px 50px;
+}
+
+.homepg-first-section .online-course-hm-left {
+  color: white;
+  flex-basis: 47%;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading-home-pg-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.online-course-links {
+  display: flex;
+}
+
+.online-course-links a {
+  color: black;
+  text-decoration: none;
+  margin: 10px;
+  padding: 15px 35px;
+  border-radius: 20px;
+  background-color: #f7faff;
+}
+
+.online-course-links .homepg-contactUs-link {
+  color: white;
+  background-color: transparent;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.online-course-links .homepg-contactUs-link:hover {
+  background-color: white;
+  color: black;
+}
+
+.online-course-heading-home-pg h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.homepg-first-section .online-course-hm-left {
+  flex-basis: 47%;
+}
+
+/**
+*Second section css
+*/
+
+.homepg-second-section {
+  padding: 50px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.homepg-about-us-heading {
+  font-size: 1rem;
+  position: relative;
+}
+
+.homepg-about-us-heading p {
+  color: #2124b1;
+  margin-bottom: 20px;
+}
+
+.homepg-about-us-heading p::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: rgba(33, 66, 177, 0.5);
+  position: absolute;
+  top: 2px;
+  left: -20px;
+}
+
+.homepg-about-us-heading p::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: rgba(33, 66, 177, 0.5);
+  position: absolute;
+  top: 5px;
+  left: -17px;
+}
+
+.homepg-about-us-heading h2 {
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.homepg-about-us-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.homepg-about-us-content .text {
+  color: rgb(136, 136, 136);
+}
+
+.homepg-about-us-content .features {
+  display: flex;
+  gap: 5rem;
+}
+
+.homepg-about-us-content .features-right p {
+  margin: 10px;
+}
+
+.homepg-about-us-content .features-left p {
+  margin: 10px;
+}
+
+.homepg-about-us-content .social-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.homepg-about-us-content .social-links button {
+  color: white;
+  padding: 10px 30px;
+  font-weight: 500;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(33, 36, 177);
+  cursor: pointer;
+}
+
+.homepg-about-us-content .social-links a {
+  font-size: 30px;
+  color: #2124b1;
+}
+
+.homepg-second-section-left {
+  flex-basis: 47%;
+}
+
+/**
+*Third section css
+*/
+
+.homepg-third-section {
+  padding: 50px 0px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepg-system-features-heading {
+  position: relative;
+  text-align: center;
+}
+
+.homepg-system-features-heading p {
+  color: #2124b1;
+  margin-bottom: 20px;
+}
+
+.homepg-system-features-heading p::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: rgba(33, 66, 177, 0.5);
+  position: absolute;
+  top: 5px;
+  left: 24%;
+}
+
+.homepg-system-features-heading p::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: rgba(33, 66, 177, 0.5);
+  position: absolute;
+  top: 8px;
+  left: 25%;
+}
+
+.homepg-system-features-heading h2 {
+  font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.system-features-homepg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.system-features {
+  width: 31.33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 30px 50px;
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transition: 0.5s;
+  color: rgb(136, 136, 136);
+}
+
+.system-features h2 {
+  font-weight: 400;
+}
+
+.system-features .home-icon {
+  font-size: 40px;
+  color: white;
+  position: absolute;
+  top: 11%;
+}
+
+.system-features:hover {
+  color: white;
+  background-color: rgb(33, 36, 177);
+}
+
+.system-features .readmore-btn {
+  color: white;
+  background-color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* .system-features .readmore-btn:hover {
+  background-color: #2124b1;
+} */
+
+/**
+*Fourth section css
+*/
+
+.homepg-fourth-section {
+  padding: 50px 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.homepg-our-teams-contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.homepg-our-teams-heading {
+  text-align: center;
+  position: relative;
+  margin: 60px 0px;
+}
+
+.homepg-our-teams-heading p {
+  color: #2124b1;
+  margin-bottom: 20px;
+}
+
+.homepg-our-teams-heading p::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: rgba(33, 66, 177, 0.5);
+  position: absolute;
+  top: 5px;
+  left: 33%;
+}
+
+.homepg-our-teams-heading p::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: rgba(33, 66, 177, 0.5);
+  position: absolute;
+  top: 8px;
+  left: 34%;
+}
+
+.homepg-our-teams-heading h2 {
+  font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.homepg-our-teams-box {
+  width: 350px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.08);
+}
+
+.homepg-our-teams-box:hover {
+  background-color: #2124b1;
+  color: white;
+}
+
+.homepg-our-teams-box .social-links {
+  flex-grow: 1;
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.homepg-our-teams-box .image {
+  position: absolute;
+  left: 30%;
+  bottom: 20%;
+}
+
+.homepg-our-teams-box .text {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.homepg-our-teams-box .image img {
+  width: 280px;
+}
+
+@media screen and (max-width: 850px) {
+  .homepg-first-section .online-course-hm-left {
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .system-features-homepg {
+    flex-direction: column;
+  }
+
+  .system-features {
+    width: 50%;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+}

@@ -5,7 +5,11 @@ const registerSchema = require("../models/register");
 
 const getCourse = async (req, res) => {
   try {
-    const getCourse = await courseSchema.find({});
+    const getCourse = await courseSchema.find({
+      userId: { $nin: req.signedCookies.userId },
+    });
+    console.log(getCourse);
+    console.log(req.signedCookies.userId);
     res.json(getCourse);
   } catch (error) {
     console.log(error);
@@ -69,7 +73,9 @@ const createPdfAndFile = async (req, res) => {
 
 const getSpecificCourse = async (req, res) => {
   try {
-    const userData = await courseSchema.find({ _id: req.params.userId });
+    const userData = await courseSchema.find({
+      _id: req.params.userId,
+    });
     res.json({ data: userData, userId: req.signedCookies.userId });
   } catch (error) {
     console.log(error);

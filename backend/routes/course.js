@@ -7,12 +7,13 @@ const {
   getCourse,
   getSpecificCourse,
   createCourse,
-  deleteCourse,
   createPdfAndFile,
   enrollStudent,
   getEnrolledCourse,
   getUserInformation,
   unEnrollCourse,
+  deleteCourse,
+  getCreatedCourse,
 } = require("../controllers/course");
 
 //Creating HTTP request methods with express router.
@@ -24,6 +25,8 @@ router
 
 router.route("/api/getEnrolledCourse").get(getEnrolledCourse);
 
+router.route("/api/getCreatedCourse").get(getCreatedCourse);
+
 router.route("/api/getUserInformation").get(getUserInformation);
 
 router.route("/api/getSpecificCourse/:userId").get(getSpecificCourse);
@@ -33,6 +36,8 @@ router.route("/api/enrollStudent/:courseId").get(enrollStudent);
 router.route("/api/unEnrollCourse/:courseId").get(unEnrollCourse);
 
 router.route("/api/get/:courseId").post(createPdfAndFile);
+
+router.route("/api/deleteCourse/:courseId").get(deleteCourse);
 
 router.route("/api/createPdfAndFile/:courseId").post(createPdfAndFile);
 

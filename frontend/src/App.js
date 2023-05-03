@@ -25,6 +25,7 @@ import {
 } from "./components";
 
 function App() {
+  // const navigate = useNavigate();
   const [checkLogin, setCheckLogin] = useState(false);
 
   const getCookies = async () => {
@@ -57,7 +58,6 @@ function App() {
           checkLogin={checkLogin}
           deleteLoginCookie={deleteLoginCookie}
         />
-        {console.log(checkLogin)}
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>

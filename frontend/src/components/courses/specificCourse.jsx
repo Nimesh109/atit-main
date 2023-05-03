@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
+
 import ReactPlayer from "react-player";
 
 import axios from "axios";
@@ -15,10 +16,13 @@ const SpecificCourse = () => {
 
   const [courseData, setCourseData] = useState([]);
 
+  const [userID, setUserID] = useState(null)
+
   useEffect(() => {
     const fetchUserData = async () => {
       const response = await axios.get(`/api/getSpecificCourse/${courseId}`);
-      setCourseData(response.data);
+      setCourseData(response.data.data);
+      setUserID(response.data.userId)
     };
     fetchUserData();
   }, [courseId]);
@@ -33,41 +37,9 @@ const SpecificCourse = () => {
           </p>
         </section>
 
-        {getRole === "teacher" && (
-          <section className="specific-course-upload-contents">
-            <form
-              method="POST"
-              action={`/api/createPdfAndFile/${courseId}`}
-              encType="multipart/form-data"
-            >
-              <label htmlFor="pdf">Click me to upload pdf file</label>
-              <input
-                type="file"
-                id="pdf"
-                name="coursePdf"
-                accept="application/pdf"
-                style={{ display: "none", border: "none" }}
-              />
-              <br />
-
-              <input
-                type="text"
-                id="video"
-                name="video"
-                placeholder="Video Link"
-              />
-              <br />
-
-              <button className="btn" type="submit">
-                Submit
-              </button>
-            </form>
-          </section>
-        )}
-
         <section className="specific-course-display-contents">
           {courseData.map((item, index) => {
-            const { videoLink, coursePdf } = item;
+            const { userId, videoLink, coursePdf } = item;
             return (
               <article className="course-contents-section" key={index}>
                 <article className="course-video-contents">
@@ -82,7 +54,41 @@ const SpecificCourse = () => {
                     return <ReactPlayer url={`${pdfItem}`} key={index} />;
                   })}
                 </article>
+
+                {(getRole === "teacher" && userId === userID) && (
+                  <section className="specific-course-upload-contents">
+                    <form
+                      method="POST"
+                      action={`/api/createPdfAndFile/${courseId}`}
+                      encType="multipart/form-data"
+                    >
+                      <label htmlFor="pdf">Click me to upload pdf file</label>
+                      <input
+                        type="file"
+                        id="pdf"
+                        name="coursePdf"
+                        accept="application/pdf"
+                        style={{ display: "none", border: "none" }}
+                      />
+                      <br />
+
+                      <input
+                        type="text"
+                        id="video"
+                        name="video"
+                        placeholder="Video Link"
+                      />
+                      <br />
+
+                      <button className="btn" type="submit">
+                        Submit
+                      </button>
+                    </form>
+                  </section>
+                )}
+
               </article>
+
             );
           })}
         </section>

@@ -25,11 +25,13 @@ const createCourse = async (req, res) => {
     //Saving created course in the database.
     await courseSchema.create({
       courseName: name,
+      userId: req.signedCookies.userId,
       courseDescription: courseDescription,
       videoLink: video,
       courseImage: newImageLocation,
       coursePdf: coursePdf[0].path,
     });
+    // res.send("hello");
 
     res.redirect("http://localhost:3000/DisplayCourse");
   } catch (error) {
@@ -68,16 +70,7 @@ const createPdfAndFile = async (req, res) => {
 const getSpecificCourse = async (req, res) => {
   try {
     const userData = await courseSchema.find({ _id: req.params.userId });
-    res.json(userData);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const deleteCourse = async (req, res) => {
-  try {
-    await courseSchema.deleteOne({});
-    res.send("deleted");
+    res.json({ data: userData, userId: req.signedCookies.userId });
   } catch (error) {
     console.log(error);
   }
@@ -150,6 +143,27 @@ const unEnrollCourse = async (req, res) => {
   }
 };
 
+const getCreatedCourse = async (req, res) => {
+  try {
+    const { userId } = req.signedCookies;
+    const createdCourse = await courseSchema.find({ userId: userId });
+    console.log(createdCourse);
+    res.json(createdCourse);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteCourse = async (req, res) => {
+  try {
+    const { courseId } = req.params;
+    await courseSchema.deleteOne({ _id: courseId });
+    res.json("sucess");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   getCourse,
   getSpecificCourse,
@@ -160,4 +174,6 @@ module.exports = {
   getEnrolledCourse,
   getUserInformation,
   unEnrollCourse,
+  deleteCourse,
+  getCreatedCourse,
 };

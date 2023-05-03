@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import { AiFillCheckCircle } from "react-icons/ai"
 
-
 import axios from "axios";
 
 import "./profile.css";
@@ -12,8 +11,9 @@ const Profile = () => {
 
   const [success, setSucess] = useState(false)
 
-
   const [userData, setUserData] = useState({})
+
+  const [createdCourse, setCreatedCourse] = useState([]);
 
   const fetchAllCourse = async () => {
     try {
@@ -36,11 +36,29 @@ const Profile = () => {
   const unEnrollCourse = async (courseId) => {
     try {
       const response = await axios.get(`/api/unEnrollCourse/${courseId}`);
-      console.log(response.data)
       if (response.data === "sucess") {
         setSucess(true)
         fetchAllCourse();
       }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const deleteCourse = async (courseId) => {
+    try {
+      const response = await axios.get(`/api/deleteCourse/${courseId}`);
+      fetchCreatedCourse();
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+  const fetchCreatedCourse = async () => {
+    try {
+      const response = await axios.get(`/api/getCreatedCourse`)
+      setCreatedCourse(response.data)
     } catch (error) {
       console.log(error)
     }
@@ -58,6 +76,7 @@ const Profile = () => {
   useEffect(() => {
     fetchAllCourse();
     fetchUserData()
+    fetchCreatedCourse();
   }, []);
 
   return (
@@ -77,10 +96,12 @@ const Profile = () => {
           <p><b>Email: </b> {userData.email}</p>
         </section>
         <section className="display-course-section-section">
+          <div style={{ display: "block", textAlign: "center" }}>
+            <h2>Enrolled Course</h2>
+          </div>
           <article className="course-items">
             {courseData.map((item, index) => {
               const { _id, courseName, courseDescription, courseImage } = item;
-
               return (
                 <article className="course-item" key={_id}>
                   <article className="course-heading">
@@ -115,6 +136,50 @@ const Profile = () => {
                 </article>
               );
             })}
+          </article>
+          <div style={{ display: "block", textAlign: "center" }}>
+            <h2>Created Course</h2>
+          </div>
+          <article className="course-items">
+
+            {
+              createdCourse.map((item, index) => {
+                const { _id, courseName, courseDescription, courseImage } = item;
+                return (
+                  <article className="course-item" key={_id}>
+                    <article className="course-heading">
+                      <img src={`http://localhost:8000/${courseImage}`} alt="" />
+                      <h2>{courseName}</h2>
+                    </article>
+                    <article className="course-description">
+                      <p>{courseDescription}</p>
+                    </article>
+                    <article className="course-link">
+                      <a href={`/specificCourse/${_id}`}>
+                        <button
+                          className="enroll-course"
+                          type="submit"
+                        >
+                          View Course
+                        </button>
+                      </a>
+                      <button
+                        className="enroll-course"
+                        type="submit"
+                        onClick={() => {
+                          deleteCourse(_id);
+                        }}
+                        style={{
+                          backgroundColor: "red"
+                        }}
+                      >
+                        Delete Course
+                      </button>
+                    </article>
+                  </article>
+                )
+              })
+            }
           </article>
         </section>
         {

@@ -67,7 +67,7 @@ const DisplayCourse = () => {
           </p>
         </section>
         <section className="display-course-section-section">
-          {
+          {/* {
             (role === "teacher") && (
               <>
                 <article className="course-items">
@@ -93,41 +93,36 @@ const DisplayCourse = () => {
                 </article>
               </>
             )
-          }
+          } */}
 
-          {
-            (role === "student") && (
-              <>
-                <article className="course-items">
-                  {courseData.map((item, index) => {
-                    const { _id, courseName, courseDescription, courseImage } = item;
-                    return (
-                      <article className="course-item" key={_id}>
-                        <article className="course-heading">
-                          <img src={`http://localhost:8000/${courseImage}`} alt="" />
-                          <h2>{courseName}</h2>
-                        </article>
-                        <article className="course-description">
-                          <p>{courseDescription}</p>
-                        </article>
-                        <article className="course-link">
-                          <button
-                            className="enroll-course"
-                            type="submit"
-                            onClick={() => {
-                              enrollCourse(_id);
-                            }}
-                          >
-                            Enroll Course
-                          </button>
-                        </article>
-                      </article>
-                    );
-                  })}
+          <article className="course-items">
+            {courseData.map((item, index) => {
+              const { _id, courseName, courseDescription, courseImage } = item;
+              return (
+                <article className="course-item" key={_id}>
+                  <article className="course-heading">
+                    <img src={`http://localhost:8000/${courseImage}`} alt="" />
+                    <h2>{courseName}</h2>
+                  </article>
+                  <article className="course-description">
+                    <p>{courseDescription}</p>
+                  </article>
+                  <article className="course-link">
+                    <button
+                      className="enroll-course"
+                      type="submit"
+                      onClick={() => {
+                        enrollCourse(_id);
+                      }}
+                    >
+                      Enroll Course
+                    </button>
+                  </article>
                 </article>
-              </>
-            )
-          }
+              );
+            })}
+          </article>
+
         </section>
         {
           success && (

@@ -6,6 +6,11 @@ const courseSchema = mongoose.Schema({
     trim: true,
     required: [true, "Please provide name"],
   },
+  userId: {
+    type: String,
+    trim: true,
+    required: [true, "Please provide userId"],
+  },
   courseDescription: {
     type: String,
     trim: true,

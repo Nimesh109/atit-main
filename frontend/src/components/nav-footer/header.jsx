@@ -39,7 +39,7 @@ const Header = ({ page, checkLogin, deleteLoginCookie }) => {
               Service
             </a>
 
-            {getRole === "teacher" && (
+            {(getRole === "teacher" && checkLogin) && (
               <a href="/createCourse" className="link">
                 Create Course
               </a>

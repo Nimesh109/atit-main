@@ -35,7 +35,7 @@ const Home = () => {
               </article>
               <article className="online-course-links">
                 <div className="animate__animated  animate__fadeInLeft">
-                  <a href="/login">Join Course</a>
+                  <a href="/displayCourse">Join Course</a>
                 </div>
                 <div className="animate__animated  animate__fadeInRight">
                   <a href="/contact" className="homepg-contactUs-link">

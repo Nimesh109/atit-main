@@ -1,0 +1,36 @@
+.display-jobs-container {
+  max-width: 1320px;
+  margin: 0px auto;
+  background-color: white;
+  position: relative;
+}
+
+.job-items {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.job-items .job-item {
+  padding: 50px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  color: #475569;
+  box-shadow: 0px 15px 15px 15px #f3f6ff;
+}
+
+.job-btn {
+  height: 40px;
+  width: 150px;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  background-color: #6f42c1;
+  cursor: pointer;
+}

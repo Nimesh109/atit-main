@@ -31,6 +31,9 @@ const auth = require("./routes/auth");
 //Importing course.js file from routes folder.
 const course = require("./routes/course");
 
+//Importing jobs.js file from routes folder.
+const jobs = require("./routes/jobs");
+
 //Importing contact.js file from routes folder.
 const contact = require("./routes/contact");
 
@@ -51,6 +54,9 @@ app.use("/", auth);
 
 //Initializing all the routes from course as a middleware in the server.
 app.use("/", multipleUpload, course);
+
+//Initializing all the routes from jobs as a middleware in the server.
+app.use("/", jobs);
 
 //Initializing all the routes from contact as a middleware in the server.
 app.use("/", contact);

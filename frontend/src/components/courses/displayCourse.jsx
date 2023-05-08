@@ -7,7 +7,7 @@ import axios from "axios";
 
 import "./displayCourse.css";
 
-const role = JSON.parse(localStorage.getItem("role"))
+// const role = JSON.parse(localStorage.getItem("role"))
 
 const DisplayCourse = () => {
   const [courseData, setCourseData] = useState([]);

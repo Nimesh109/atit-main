@@ -44,9 +44,16 @@ const Header = ({ page, checkLogin, deleteLoginCookie }) => {
                 Create Course
               </a>
             )}
-            <a href="/contact" className="link">
-              Contact
-            </a>
+
+
+            {(getRole === "organization" && checkLogin) && (
+              <a href="/CreateJobs" className="link">
+                Create Jobs
+              </a>
+            )}
+
+
+
             {!checkLogin && (
               <>
                 <a href="register" className="link">
@@ -58,11 +65,19 @@ const Header = ({ page, checkLogin, deleteLoginCookie }) => {
               </>
             )}
 
+            <a href="/contact" className="link">
+              Contact
+            </a>
             {checkLogin && (
               <>
                 <a href="/DisplayCourse" className="link">
-                  Courses
+                  Course
                 </a>
+
+                <a href="/DisplayJobs" className="link">
+                  Jobs
+                </a>
+
                 <a href="/profile" className="link">
                   Profile
                 </a>

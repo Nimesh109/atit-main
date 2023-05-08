@@ -6,6 +6,8 @@ import axios from "axios";
 
 import "./profile.css";
 
+// const getRole = JSON.parse(localStorage.getItem("role"))
+
 const Profile = () => {
   const [courseData, setCourseData] = useState([]);
 
@@ -14,6 +16,8 @@ const Profile = () => {
   const [userData, setUserData] = useState({})
 
   const [createdCourse, setCreatedCourse] = useState([]);
+
+  const [appliedJobs, setAppliedJobs] = useState([]);
 
   const fetchAllCourse = async () => {
     try {
@@ -47,7 +51,7 @@ const Profile = () => {
 
   const deleteCourse = async (courseId) => {
     try {
-      const response = await axios.get(`/api/deleteCourse/${courseId}`);
+      await axios.get(`/api/deleteCourse/${courseId}`);
       fetchCreatedCourse();
     } catch (error) {
       console.log(error)
@@ -64,6 +68,22 @@ const Profile = () => {
     }
   }
 
+  const fetchApplyedJobs = async () => {
+    try {
+      const response = await axios.get("/api/getAppliedJobs")
+      setAppliedJobs(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchAllCourse();
+    fetchUserData()
+    fetchCreatedCourse();
+    fetchApplyedJobs();
+  }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setSucess(false)
@@ -72,12 +92,6 @@ const Profile = () => {
   }, [success])
 
 
-
-  useEffect(() => {
-    fetchAllCourse();
-    fetchUserData()
-    fetchCreatedCourse();
-  }, []);
 
   return (
     <main>
@@ -137,6 +151,8 @@ const Profile = () => {
               );
             })}
           </article>
+
+
           <div style={{ display: "block", textAlign: "center" }}>
             <h2>Created Course</h2>
           </div>
@@ -176,6 +192,52 @@ const Profile = () => {
                         Delete Course
                       </button>
                     </article>
+                  </article>
+                )
+              })
+            }
+          </article>
+
+
+          <div style={{ display: "block", textAlign: "center" }}>
+            <h2>Applied Jobs</h2>
+          </div>
+          <article className="course-items">
+
+            {
+              appliedJobs.map((item, index) => {
+                const { _id, jobDescription, name, participants } = item;
+                return (
+                  <article className="course-item" key={_id}>
+                    <article className="course-heading">
+                      {/* <img src={`http://localhost:8000/${courseImage}`} alt="" /> */}
+                      <h2>Company Name : {name}</h2>
+                    </article>
+                    <article className="course-description">
+                      <p>Description: {jobDescription}</p>
+                    </article>
+                    {/* <article className="course-link">
+                      <a href={`/specificCourse/${_id}`}>
+                        <button
+                          className="enroll-course"
+                          type="submit"
+                        >
+                          View Course
+                        </button>
+                      </a>
+                      <button
+                        className="enroll-course"
+                        type="submit"
+                        onClick={() => {
+                          deleteCourse(_id);
+                        }}
+                        style={{
+                          backgroundColor: "red"
+                        }}
+                      >
+                        Delete Course
+                      </button>
+                    </article> */}
                   </article>
                 )
               })

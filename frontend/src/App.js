@@ -7,20 +7,22 @@ import axios from "axios";
 import "./App.css";
 
 import {
-  Login,
-  ForgetPass,
-  Register,
-  Password,
   Headers,
   Footer,
   Home,
   About,
   Contact,
   Service,
+  Profile,
   CreateCourse,
   DisplayCourse,
   SpecificCourse,
-  Profile,
+  DisplayJobs,
+  CreateJobs,
+  Login,
+  ForgetPass,
+  Register,
+  Password,
   ErrorPage,
 } from "./components";
 
@@ -83,6 +85,8 @@ function App() {
               <Route path="/profile" element={<Profile />}></Route>
               <Route path="/createCourse" element={<CreateCourse />}></Route>
               <Route path="/displayCourse" element={<DisplayCourse />}></Route>
+              <Route path="/CreateJobs" element={<CreateJobs />}></Route>
+              <Route path="/DisplayJobs" element={<DisplayJobs />}></Route>
             </>
           )}
           {/* 404 Page */}

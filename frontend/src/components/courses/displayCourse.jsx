@@ -18,7 +18,7 @@ const DisplayCourse = () => {
 
   const fetchAllCourse = async () => {
     try {
-      const response = await axios.get("/api/createCourse");
+      const response = await axios.get("/api/course/createCourse");
       setCourseData(response.data);
     } catch (error) {
       console.log(error);
@@ -27,7 +27,7 @@ const DisplayCourse = () => {
 
   const enrollCourse = async (courseId) => {
     try {
-      const response = await axios.get(`/api/enrollStudent/${courseId}`);
+      const response = await axios.get(`/api/course/enrollStudent/${courseId}`);
       if (response.data === "Sucess") {
         setSucess(true)
 

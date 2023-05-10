@@ -14,12 +14,12 @@ const DisplayJobs = () => {
 
 
  const fetchAllJobs = async () => {
-  const response = await axios.get("/api/allJobs");
+  const response = await axios.get("/api/job/allJobs");
   setAllJobs(response.data.getAllJobs)
  }
 
  const applyJobs = async (id) => {
-  const response = await axios.get(`/api/applyJob/${id}`);
+  const response = await axios.get(`/api/job/applyJob/${id}`);
   if (response.data === "Unsuccessful") {
    setResponseMessage({ msg: "You Have Already Applied For Job", unSucess: true })
   } else if (response.data === "Successful") {

@@ -18,28 +18,28 @@ const {
 
 //Creating HTTP request methods with express router.
 router
-  .route("/api/createCourse")
+  .route("/createCourse")
   .get(getCourse)
   .post(createCourse)
   .delete(deleteCourse);
 
-router.route("/api/getEnrolledCourse").get(getEnrolledCourse);
+router.route("/getEnrolledCourse").get(getEnrolledCourse);
 
-router.route("/api/getCreatedCourse").get(getCreatedCourse);
+router.route("/getCreatedCourse").get(getCreatedCourse);
 
-router.route("/api/getUserInformation").get(getUserInformation);
+router.route("/getUserInformation").get(getUserInformation);
 
-router.route("/api/getSpecificCourse/:userId").get(getSpecificCourse);
+router.route("/getSpecificCourse/:userId").get(getSpecificCourse);
 
-router.route("/api/enrollStudent/:courseId").get(enrollStudent);
+router.route("/enrollStudent/:courseId").get(enrollStudent);
 
-router.route("/api/unEnrollCourse/:courseId").get(unEnrollCourse);
+router.route("/unEnrollCourse/:courseId").get(unEnrollCourse);
 
-router.route("/api/get/:courseId").post(createPdfAndFile);
+router.route("/get/:courseId").post(createPdfAndFile);
 
-router.route("/api/deleteCourse/:courseId").get(deleteCourse);
+router.route("/deleteCourse/:courseId").get(deleteCourse);
 
-router.route("/api/createPdfAndFile/:courseId").post(createPdfAndFile);
+router.route("/createPdfAndFile/:courseId").post(createPdfAndFile);
 
 //Exporting router.
 

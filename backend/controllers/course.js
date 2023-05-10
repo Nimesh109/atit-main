@@ -8,8 +8,6 @@ const getCourse = async (req, res) => {
     const getCourse = await courseSchema.find({
       userId: { $nin: req.signedCookies.userId },
     });
-    console.log(getCourse);
-    console.log(req.signedCookies.userId);
     res.json(getCourse);
   } catch (error) {
     console.log(error);
@@ -153,7 +151,6 @@ const getCreatedCourse = async (req, res) => {
   try {
     const { userId } = req.signedCookies;
     const createdCourse = await courseSchema.find({ userId: userId });
-    console.log(createdCourse);
     res.json(createdCourse);
   } catch (error) {
     console.log(error);

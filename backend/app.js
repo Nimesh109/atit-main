@@ -20,9 +20,21 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+const jobStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./public/jobs");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const jobUpload = multer({ storage: jobStorage });
+
 const multipleUpload = upload.fields([
   { name: "courseFile", maxCount: 1 },
   { name: "coursePdf", maxCount: 1 },
+  { name: "jobPdf", maxCount: 1 },
 ]);
 
 //Importing auth.js file from routes folder.
@@ -53,10 +65,10 @@ app.use(express.static("./public"));
 app.use("/", auth);
 
 //Initializing all the routes from course as a middleware in the server.
-app.use("/", multipleUpload, course);
+app.use("/api/course", multipleUpload, course);
 
 //Initializing all the routes from jobs as a middleware in the server.
-app.use("/", jobs);
+app.use("/api/job", jobUpload.single("jobPdf"), jobs);
 
 //Initializing all the routes from contact as a middleware in the server.
 app.use("/", contact);

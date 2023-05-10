@@ -24,7 +24,11 @@ const getAppliedJobs = async (req, res) => {
 
 const createJobs = async (req, res) => {
   try {
-    await jobSchema.create({ ...req.body });
+    const path = req.file.path;
+    const changePath = path.split("/");
+    const newPath = "/" + changePath[1] + "/" + changePath[2];
+
+    await jobSchema.create({ ...req.body, pdfPath: newPath });
     res.redirect("http://localhost:3000/DisplayJobs");
   } catch (error) {
     console.log(error);
@@ -34,8 +38,6 @@ const createJobs = async (req, res) => {
 const applyJob = async (req, res) => {
   try {
     const { jobId } = req.params;
-    console.log(jobId);
-    console.log(req.signedCookies.userId);
     const findIfUserApplyed = await jobSchema.findOne({
       _id: jobId,
       userId: { $in: req.signedCookies.userId },

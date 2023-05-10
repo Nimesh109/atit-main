@@ -21,7 +21,7 @@ const Profile = () => {
 
   const fetchAllCourse = async () => {
     try {
-      const response = await axios.get("/api/getEnrolledCourse");
+      const response = await axios.get("/api/course/getEnrolledCourse");
       setCourseData(response.data);
     } catch (error) {
       console.log(error);
@@ -30,7 +30,7 @@ const Profile = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get("/api/getUserInformation");
+      const response = await axios.get("/api/course/getUserInformation");
       setUserData(response.data)
     } catch (error) {
       console.log(error);
@@ -39,7 +39,7 @@ const Profile = () => {
 
   const unEnrollCourse = async (courseId) => {
     try {
-      const response = await axios.get(`/api/unEnrollCourse/${courseId}`);
+      const response = await axios.get(`/api/course/unEnrollCourse/${courseId}`);
       if (response.data === "sucess") {
         setSucess(true)
         fetchAllCourse();
@@ -51,7 +51,7 @@ const Profile = () => {
 
   const deleteCourse = async (courseId) => {
     try {
-      await axios.get(`/api/deleteCourse/${courseId}`);
+      await axios.get(`/api/course/deleteCourse/${courseId}`);
       fetchCreatedCourse();
     } catch (error) {
       console.log(error)
@@ -61,7 +61,7 @@ const Profile = () => {
 
   const fetchCreatedCourse = async () => {
     try {
-      const response = await axios.get(`/api/getCreatedCourse`)
+      const response = await axios.get(`/api/course/getCreatedCourse`)
       setCreatedCourse(response.data)
     } catch (error) {
       console.log(error)
@@ -70,7 +70,7 @@ const Profile = () => {
 
   const fetchApplyedJobs = async () => {
     try {
-      const response = await axios.get("/api/getAppliedJobs")
+      const response = await axios.get("/api/job/getAppliedJobs")
       setAppliedJobs(response.data)
     } catch (error) {
       console.log(error)

@@ -23,7 +23,7 @@ const CreateJobs = () => {
       <article className="contact-page-form  animate__animated  animate__fadeInUp">
        <form
         className="upload-course-form"
-        action="/api/createJobs"
+        action="/api/job/createJobs"
         method="POST"
         encType="multipart/form-data"
        >
@@ -51,16 +51,16 @@ const CreateJobs = () => {
          />
         </div>
 
-        {/* <div
+        <div
          style={{
           display: "flex",
           // justifyContent: "center",
           // alignItems: "center",
           flexDirection: "column",
-          gap: "1rem",
+          gap: "1rejobUploadm",
          }}
         >
-         <label htmlFor="pdf">Upload PDF File</label>
+         <label htmlFor="jobPdf">Upload PDF File</label>
          <input
           type="file"
           id="jobPdf"
@@ -72,7 +72,7 @@ const CreateJobs = () => {
            cursor: "pointer",
           }}
          />
-        </div> */}
+        </div>
 
 
         <div className="take-full-width-input">

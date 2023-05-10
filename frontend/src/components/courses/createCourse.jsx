@@ -26,7 +26,7 @@ const CreateCourse = () => {
               <article className="contact-page-form  animate__animated  animate__fadeInUp">
                 <form
                   className="upload-course-form"
-                  action="/api/createCourse"
+                  action="/api/course/createCourse"
                   method="POST"
                   encType="multipart/form-data"
                 >

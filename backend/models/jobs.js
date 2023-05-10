@@ -26,6 +26,11 @@ const jobSchema = new mongoose.Schema({
     trim: true,
     required: [true, "Please provide total number of participants"],
   },
+  pdfPath: {
+    type: String,
+    trim: true,
+    required: [true, "Please provide pdf for job description"],
+  },
 });
 
 module.exports = mongoose.model("job", jobSchema);

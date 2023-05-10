@@ -20,7 +20,7 @@ const SpecificCourse = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const response = await axios.get(`/api/getSpecificCourse/${courseId}`);
+      const response = await axios.get(`/api/course/getSpecificCourse/${courseId}`);
       setCourseData(response.data.data);
       setUserID(response.data.userId)
     };
@@ -59,7 +59,7 @@ const SpecificCourse = () => {
                   <section className="specific-course-upload-contents">
                     <form
                       method="POST"
-                      action={`/api/createPdfAndFile/${courseId}`}
+                      action={`/api/course/createPdfAndFile/${courseId}`}
                       encType="multipart/form-data"
                     >
                       <label htmlFor="pdf">Click me to upload pdf file</label>

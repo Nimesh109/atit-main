@@ -18,6 +18,8 @@ const SpecificCourse = () => {
 
   const [userID, setUserID] = useState(null)
 
+  const [pdfPath, setPdfPath] = useState("");
+
   useEffect(() => {
     const fetchUserData = async () => {
       const response = await axios.get(`/api/course/getSpecificCourse/${courseId}`);
@@ -26,6 +28,20 @@ const SpecificCourse = () => {
     };
     fetchUserData();
   }, [courseId]);
+
+  useEffect(() => {
+    // Make a request to the backend API to get the PDF file path
+    axios.get("http://localhost:8000/courses/1682526085651.pdf", { responseType: "blob" }).then((response) => {
+      // Create a Blob object from the response data
+      const blob = new Blob([response.data], { type: "application/pdf" });
+
+      // Create a URL object from the Blob object
+      const url = URL.createObjectURL(blob);
+
+      setPdfPath(url);
+    });
+  }, []);
+
   return (
     <main>
       <div className="contact-page-container">
@@ -51,7 +67,25 @@ const SpecificCourse = () => {
                 <article className="course-pdf-contents">
                   <h2>Pdf Contents</h2>
                   {coursePdf.map((pdfItem, index) => {
-                    return <ReactPlayer url={`${pdfItem}`} key={index} />;
+                    const getPath = pdfItem.split("/")
+                    let path = getPath[2]
+                    return <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem", padding: "20px" }} key={index}>
+                      <a
+                        href={`http://localhost:8000/courses/${path}`}
+                        download
+                        target="_blank"
+                      >
+                        {path}
+                      </a>
+                      <br />
+                      <a
+                        href={pdfPath}
+                        download
+                        target="_blank"
+                      >
+                        Download PDF
+                      </a>
+                    </div>
                   })}
                 </article>
 

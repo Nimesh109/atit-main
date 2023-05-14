@@ -91,8 +91,6 @@ const Profile = () => {
     return (() => { clearTimeout(timer) })
   }, [success])
 
-
-
   return (
     <main>
       <div className="display-course-page-container">
@@ -206,7 +204,10 @@ const Profile = () => {
 
             {
               appliedJobs.map((item, index) => {
-                const { _id, jobDescription, name, participants } = item;
+                const { _id, jobDescription, name, participants, pdfPath } = item;
+                console.log(pdfPath)
+                const getPath = pdfPath.split("/")
+                let path = getPath[2]
                 return (
                   <article className="course-item" key={_id}>
                     <article className="course-heading">
@@ -238,6 +239,16 @@ const Profile = () => {
                         Delete Course
                       </button>
                     </article> */}
+                    <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem", padding: "20px" }} key={index}>
+                      <a
+                        href={`http://localhost:8000/jobs/${path}`}
+                        download
+                        target="_blank"
+                      >
+                        {path}
+                      </a>
+                      <br />
+                    </div>
                   </article>
                 )
               })
